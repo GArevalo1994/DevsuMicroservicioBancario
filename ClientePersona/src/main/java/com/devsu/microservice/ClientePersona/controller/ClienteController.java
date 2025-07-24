@@ -2,7 +2,7 @@ package com.devsu.microservice.ClientePersona.controller;
 
 import com.devsu.microservice.ClientePersona.dto.ClienteDTO;
 import com.devsu.microservice.ClientePersona.response.ApiResponse;
-import com.devsu.microservice.ClientePersona.service.Impl.ClienteService;
+import com.devsu.microservice.ClientePersona.service.ClienteService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

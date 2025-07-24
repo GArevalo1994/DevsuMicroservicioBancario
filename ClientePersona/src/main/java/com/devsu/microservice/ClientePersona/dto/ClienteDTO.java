@@ -3,7 +3,9 @@ package com.devsu.microservice.ClientePersona.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-public class ClienteDTO {
+import java.io.Serializable;
+
+public class ClienteDTO implements Serializable {
     private Long id;
 
     @NotBlank(message = "El clienteId es obligatorio")
@@ -12,7 +14,7 @@ public class ClienteDTO {
     @NotBlank(message = "La contraseña es obligatoria")
     private String contrasena;
 
-    private Integer estado = 1;
+    private Boolean estado = true;
 
     @NotBlank(message = "El nombre es obligatorio")
     private String nombre;
@@ -44,11 +46,11 @@ public class ClienteDTO {
         this.contrasena = contrasena;
     }
 
-    public Integer getEstado() {
+    public Boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(Integer estado) {
+    public void setEstado(Boolean estado) {
         this.estado = estado;
     }
 

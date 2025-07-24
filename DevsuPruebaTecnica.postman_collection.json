@@ -1,0 +1,1066 @@
+{
+	"info": {
+		"_postman_id": "7ec7304f-e65b-4952-9e61-78b860ceecd0",
+		"name": "DevsuPruebaTecnica",
+		"description": "Dentro de esta collencion podemos encontrar los detalles de los endpoints de los microservicios Cliente Persona y Cuenta Movimiento sus metodos HTTP , ejemplos de sus request y response .",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3700253",
+		"_collection_link": "https://planetary-robot-798268.postman.co/workspace/4fd5e7ce-d40f-4c38-8cfe-7d3defe52721/collection/3700253-7ec7304f-e65b-4952-9e61-78b860ceecd0?action=share&source=collection_link&creator=3700253"
+	},
+	"item": [
+		{
+			"name": "Cliente Persona API",
+			"item": [
+				{
+					"name": "crear cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"clienteId\": \"CLTEST02\",\r\n  \"contrasena\": \"pass1010\",\r\n  \"estado\": true,\r\n  \"nombre\": \"Test 2\",\r\n  \"personaId\": 4\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clientes"
+							]
+						},
+						"description": "Para poder crear un cliente previamente tiene que existir un registro Persona, unico que no este asociado a ningun Cliente, este se puede crear dentro de la base de datos utilizando un ejemplo dentro del file **db_ddl_tables.sql** en la raiz del proyecto."
+					},
+					"response": [
+						{
+							"name": "crear cliente",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"clienteId\": \"CLTEST01\",\r\n  \"contrasena\": \"pass999\",\r\n  \"estado\": true,\r\n  \"nombre\": \"Test 1\",\r\n  \"personaId\": 3\r\n}\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/clientes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"clientes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 24 Jul 2025 15:57:48 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Cliente creado\",\n    \"data\": {\n        \"id\": 3,\n        \"clienteId\": \"CLTEST01\",\n        \"contrasena\": \"pass999\",\n        \"estado\": true,\n        \"nombre\": \"Test 1\",\n        \"personaId\": 3\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "listar clientes",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clientes"
+							]
+						},
+						"description": "Muestra un listado de los datos de todos los clientes existentes."
+					},
+					"response": [
+						{
+							"name": "http://localhost:8080/api/clientes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/clientes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"clientes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 24 Jul 2025 18:07:56 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Lista de clientes\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"clienteId\": \"CLI123\",\n            \"contrasena\": \"password123\",\n            \"estado\": true,\n            \"nombre\": \"Juan Prez\",\n            \"personaId\": 1\n        },\n        {\n            \"id\": 2,\n            \"clienteId\": \"CLI456\",\n            \"contrasena\": \"password456\",\n            \"estado\": true,\n            \"nombre\": \"Ana Gmez\",\n            \"personaId\": 2\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "cliente por id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/clientes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clientes",
+								"1"
+							]
+						},
+						"description": "Retorna la informacion del Cliente especificado por medio de su id"
+					},
+					"response": [
+						{
+							"name": "cliente por id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/clientes/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"clientes",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 24 Jul 2025 18:14:58 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Cliente encontrado\",\n    \"data\": {\n        \"id\": 1,\n        \"clienteId\": \"CLI123\",\n        \"contrasena\": \"password123\",\n        \"estado\": true,\n        \"nombre\": \"Juan Prez\",\n        \"personaId\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "eliminar clientes",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/clientes/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clientes",
+								"2"
+							]
+						},
+						"description": "Elimina un cliente existente dentro de los registros de la base de datos por medio de su id."
+					},
+					"response": [
+						{
+							"name": "eliminar clientes",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/clientes/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"clientes",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 24 Jul 2025 18:16:53 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Cliente eliminado\",\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "actualizar cliente",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"clienteId\": \"CLTEST01\",\r\n  \"contrasena\": \"nuevaPass123\",\r\n  \"estado\": true,\r\n  \"nombre\": \"Cliente Actualizado\",\r\n  \"personaId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/clientes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clientes",
+								"1"
+							]
+						},
+						"description": "Actualiza los datos del cliente existente en la base de datos por medio de su id."
+					},
+					"response": [
+						{
+							"name": "actualizar cliente",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"clienteId\": \"CLTEST01\",\r\n  \"contrasena\": \"nuevaPass123\",\r\n  \"estado\": true,\r\n  \"nombre\": \"Cliente Actualizado\",\r\n  \"personaId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/clientes/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"clientes",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 24 Jul 2025 18:22:06 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Cliente actualizado\",\n    \"data\": {\n        \"id\": 1,\n        \"clienteId\": \"CLI123\",\n        \"contrasena\": \"password123\",\n        \"estado\": true,\n        \"nombre\": \"Cliente Actualizado\",\n        \"personaId\": 1\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "Endpoints creados para realizar las operaciones CRUD para los clientes y comunicacion sincrona entre clientes y cuenta."
+		},
+		{
+			"name": "Cuenta Movimiento API",
+			"item": [
+				{
+					"name": "Cuenta",
+					"item": [
+						{
+							"name": "Crear cuenta",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"numeroCuenta\": \"777777\",\r\n  \"tipo\": \"AHORRO\",\r\n  \"saldoInicial\": 2500.00,\r\n  \"estado\": true,\r\n  \"clienteId\": 4\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/cuentas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"cuentas"
+									]
+								},
+								"description": "Crea una cuenta que va a estar asociada a un cliente ya existente."
+							},
+							"response": [
+								{
+									"name": "Crear cuenta",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"numeroCuenta\": \"777777\",\r\n  \"tipo\": \"AHORRO\",\r\n  \"saldoInicial\": 2500.00,\r\n  \"estado\": true,\r\n  \"clienteId\": 4\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8081/api/cuentas",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8081",
+											"path": [
+												"api",
+												"cuentas"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 24 Jul 2025 18:31:11 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"Cuenta creada\",\n    \"data\": {\n        \"id\": 4,\n        \"numeroCuenta\": \"777777\",\n        \"tipo\": \"AHORRO\",\n        \"saldoInicial\": 2500,\n        \"estado\": true,\n        \"clienteId\": 4\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Actualizar cuenta",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 4,\r\n  \"numeroCuenta\": \"777777\",\r\n  \"tipo\": \"CORRIENTE\",\r\n  \"saldoInicial\": 1200.00,\r\n  \"estado\": true,\r\n  \"clienteId\": 4\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/cuentas/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"cuentas",
+										"4"
+									]
+								},
+								"description": "Actualiza la informacion de una cuenta de un cliente ya existente."
+							},
+							"response": [
+								{
+									"name": "Actualizar cuenta",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"id\": 4,\r\n  \"numeroCuenta\": \"777777\",\r\n  \"tipo\": \"CORRIENTE\",\r\n  \"saldoInicial\": 1200.00,\r\n  \"estado\": true,\r\n  \"clienteId\": 4\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8081/api/cuentas/4",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8081",
+											"path": [
+												"api",
+												"cuentas",
+												"4"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 24 Jul 2025 18:32:30 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"Cuenta actualizada\",\n    \"data\": {\n        \"id\": 4,\n        \"numeroCuenta\": \"777777\",\n        \"tipo\": \"CORRIENTE\",\n        \"saldoInicial\": 1200,\n        \"estado\": true,\n        \"clienteId\": 4\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Cuenta por id",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/cuentas/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"cuentas",
+										"4"
+									]
+								},
+								"description": "Retorna la informacion de una cuenta especifica por medio de su id"
+							},
+							"response": [
+								{
+									"name": "Cuenta por id",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://localhost:8081/api/cuentas/4",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8081",
+											"path": [
+												"api",
+												"cuentas",
+												"4"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 24 Jul 2025 18:54:14 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"Cuenta encontrada\",\n    \"data\": {\n        \"id\": 4,\n        \"numeroCuenta\": \"777777\",\n        \"tipo\": \"CORRIENTE\",\n        \"saldoInicial\": 1400,\n        \"estado\": true,\n        \"clienteId\": 4\n    }\n}"
+								}
+							]
+						}
+					],
+					"description": "Endpoints para realizar las operaciones de crear y actualizar cuenta"
+				},
+				{
+					"name": "Movimiento",
+					"item": [
+						{
+							"name": "Reporte",
+							"item": [
+								{
+									"name": "Reporte estado de cuenta",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8081/api/reportes?clienteId=4&fechaInicio=2025-07-01&fechaFin=2025-07-24",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8081",
+											"path": [
+												"api",
+												"reportes"
+											],
+											"query": [
+												{
+													"key": "clienteId",
+													"value": "4"
+												},
+												{
+													"key": "fechaInicio",
+													"value": "2025-07-01"
+												},
+												{
+													"key": "fechaFin",
+													"value": "2025-07-24"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Reporte estado de cuenta",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:8081/api/reportes?clienteId=4&fechaInicio=2025-07-01&fechaFin=2025-07-24",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "8081",
+													"path": [
+														"api",
+														"reportes"
+													],
+													"query": [
+														{
+															"key": "clienteId",
+															"value": "4"
+														},
+														{
+															"key": "fechaInicio",
+															"value": "2025-07-01"
+														},
+														{
+															"key": "fechaFin",
+															"value": "2025-07-24"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Thu, 24 Jul 2025 18:37:49 GMT"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=60"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"nombre\": \"Test 2\",\n    \"clienteId\": \"4\",\n    \"cuentas\": [\n        {\n            \"numeroCuentas\": \"777777\",\n            \"tipo\": \"Corriente\",\n            \"saldoInicial\": 1400,\n            \"estado\": true,\n            \"saldoDisponible\": 1400,\n            \"movimientos\": [\n                {\n                    \"fecha\": \"2025-07-24T13:45\",\n                    \"tipoMovimiento\": \"Retiro\",\n                    \"valor\": -100,\n                    \"saldo\": 1400\n                },\n                {\n                    \"fecha\": \"2025-07-24T18:33:22\",\n                    \"tipoMovimiento\": \"Deposito\",\n                    \"valor\": 300,\n                    \"saldo\": 1500\n                }\n            ]\n        }\n    ]\n}"
+										}
+									]
+								}
+							],
+							"description": "Genera reporte de los movimientos de un cliente especifico por rango de fecha"
+						},
+						{
+							"name": "Crear movimiento",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tipoMovimiento\": \"DEPOSITO\",\r\n  \"valor\": 300.00,\r\n  \"cuentaId\": 4\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/movimientos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"movimientos"
+									]
+								},
+								"description": "Creacion de movimiento a una cuenta existente"
+							},
+							"response": [
+								{
+									"name": "Crear movimiento",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoMovimiento\": \"DEPOSITO\",\r\n  \"valor\": 300.00,\r\n  \"cuentaId\": 4\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8081/api/movimientos",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8081",
+											"path": [
+												"api",
+												"movimientos"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 24 Jul 2025 18:33:22 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"Movimiento registrado\",\n    \"data\": {\n        \"id\": 8,\n        \"fecha\": \"2025-07-24T18:33:22.091423435\",\n        \"tipoMovimiento\": \"DEPOSITO\",\n        \"valor\": 300,\n        \"saldo\": 1500,\n        \"cuentaId\": 4\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Consultar movimiento por id",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/api/movimientos/8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"movimientos",
+										"8"
+									]
+								},
+								"description": "Retorna la informacion de un movimiento de una cuenta por medio de id"
+							},
+							"response": [
+								{
+									"name": "Consultar movimiento por id",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8081/api/movimientos/8",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8081",
+											"path": [
+												"api",
+												"movimientos",
+												"8"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 24 Jul 2025 18:35:11 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"Movimiento encontrado\",\n    \"data\": {\n        \"id\": 8,\n        \"fecha\": \"2025-07-24T18:33:22\",\n        \"tipoMovimiento\": \"DEPOSITO\",\n        \"valor\": 300,\n        \"saldo\": 1500,\n        \"cuentaId\": 4\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Actualizar movimiento",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tipoMovimiento\": \"RETIRO\",\r\n  \"valor\": -100.00,\r\n  \"cuentaId\": 4\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/movimientos/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"movimientos",
+										"4"
+									]
+								},
+								"description": "Actualiza la informacion de la cuenta por medio de su id"
+							},
+							"response": [
+								{
+									"name": "Actualizar movimiento",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"tipoMovimiento\": \"RETIRO\",\r\n  \"valor\": -100.00,\r\n  \"cuentaId\": 4\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8081/api/movimientos/4",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8081",
+											"path": [
+												"api",
+												"movimientos",
+												"4"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 24 Jul 2025 18:36:36 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"message\": \"Movimiento actualizado\",\n    \"data\": {\n        \"id\": 4,\n        \"fecha\": \"2025-07-24T13:45\",\n        \"tipoMovimiento\": \"RETIRO\",\n        \"valor\": -100,\n        \"saldo\": 1400,\n        \"cuentaId\": 4\n    }\n}"
+								}
+							]
+						}
+					],
+					"description": "Endpoints para realizar las operaciones CRU de movimientos"
+				}
+			],
+			"description": "Enpoints creados para realizar las operaciones CRU dentro del microservicio"
+		}
+	]
+}

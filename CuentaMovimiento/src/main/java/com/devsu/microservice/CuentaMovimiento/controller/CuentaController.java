@@ -28,7 +28,7 @@ public class CuentaController {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(new ApiResponse<>(true,"Cuenta creada",cuenta));
     }
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<CuentaDTO>>updateCuenta(@PathVariable Long id,@RequestBody @Valid CuentaDTO dto){
         CuentaDTO cuenta=cuentaService.actualizarCuenta(dto);
          return ResponseEntity.ok(new ApiResponse<>(true,"Cuenta actualizada",cuenta));

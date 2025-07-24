@@ -5,6 +5,7 @@ import com.devsu.microservice.ClientePersona.entity.Cliente;
 import com.devsu.microservice.ClientePersona.exception.ResourceNotFoundException;
 import com.devsu.microservice.ClientePersona.mapper.ClienteMapper;
 import com.devsu.microservice.ClientePersona.repository.ClienteRepository;
+import com.devsu.microservice.ClientePersona.service.Impl.ClienteServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

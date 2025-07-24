@@ -1,4 +1,4 @@
-package com.devsu.microservice.ClientePersona.service.Impl;
+package com.devsu.microservice.ClientePersona.service;
 
 import com.devsu.microservice.ClientePersona.dto.ClienteDTO;
 

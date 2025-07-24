@@ -16,7 +16,7 @@ public class Cliente {
     private String contrasena;
 
     @Column
-    private Integer estado = 1;
+    private Boolean estado = true;
 
     @Column
     private String nombre;
@@ -25,7 +25,6 @@ public class Cliente {
     @JoinColumn(name = "persona_id", unique = true)
     private Persona persona;
 
-    // getters & setters
     public Long getId() {
         return id;
     }
@@ -50,11 +49,11 @@ public class Cliente {
         this.contrasena = contrasena;
     }
 
-    public Integer getEstado() {
+    public Boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(Integer estado) {
+    public void setEstado(Boolean estado) {
         this.estado = estado;
     }
 

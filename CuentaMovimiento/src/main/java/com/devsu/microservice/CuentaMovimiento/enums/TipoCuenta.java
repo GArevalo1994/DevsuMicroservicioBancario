@@ -2,7 +2,7 @@ package com.devsu.microservice.CuentaMovimiento.enums;
 
 public enum TipoCuenta {
 
-    AHORROS("Ahorros"),
+    AHORRO("Ahorro"),
     CORRIENTE("Corriente");
 
     private final String value;

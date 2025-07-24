@@ -1,27 +1,34 @@
-package com.devsu.microservice.ClientePersona.service;
+package com.devsu.microservice.ClientePersona.service.Impl;
 
+import com.devsu.microservice.ClientePersona.dto.ClientMessage;
 import com.devsu.microservice.ClientePersona.mapper.ClienteMapper;
 import com.devsu.microservice.ClientePersona.dto.ClienteDTO;
 import com.devsu.microservice.ClientePersona.entity.Cliente;
 import com.devsu.microservice.ClientePersona.entity.Persona;
 import com.devsu.microservice.ClientePersona.exception.ResourceNotFoundException;
+import com.devsu.microservice.ClientePersona.messaging.publisher.ClientePublisher;
 import com.devsu.microservice.ClientePersona.repository.ClienteRepository;
 import com.devsu.microservice.ClientePersona.repository.PersonaRepository;
-import com.devsu.microservice.ClientePersona.service.Impl.ClienteService;
+import com.devsu.microservice.ClientePersona.service.ClienteService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ClienteServiceImpl implements ClienteService{
+public class ClienteServiceImpl implements ClienteService {
 
     private final ClienteRepository clienteRepository;
     private final PersonaRepository personaRepository;
+    private final ClientePublisher clientePublisher;
 
-    public ClienteServiceImpl(ClienteRepository clienteRepository,PersonaRepository personaRepository){
+    public ClienteServiceImpl(ClienteRepository clienteRepository,
+                              PersonaRepository personaRepository,
+                              ClientePublisher clientePublisher){
+
         this.clienteRepository=clienteRepository;
         this.personaRepository=personaRepository;
+        this.clientePublisher=clientePublisher;
     }
 
     @Override
@@ -30,6 +37,7 @@ public class ClienteServiceImpl implements ClienteService{
                 .orElseThrow(()-> new ResourceNotFoundException("Persona no encontrada con id:"+clienteDTO.getPersonaId()));
         Cliente cliente= ClienteMapper.toEntity(clienteDTO,persona);
         cliente=clienteRepository.save(cliente);
+        clientePublisher.publicarCliente(new ClientMessage(cliente.getId(),cliente.getNombre()));
         return ClienteMapper.toDTO(cliente);
     }
 
